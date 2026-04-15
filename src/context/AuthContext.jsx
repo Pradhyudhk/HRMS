@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(false);
     }, []);
 
+<<<<<<< HEAD
     // Mock employee data for auth purposes (kept in sync with DataContext)
     const MOCK_EMPLOYEES = [
         { id: 0, name: "Pradhyudh", role: "Founder", email: "pradhyudh@cluecorp.com" },
@@ -26,11 +27,16 @@ export const AuthProvider = ({ children }) => {
         { id: 4, name: "Eren Yeager", role: "Head of Strategy", email: "eren@cluecorp.com" },
         { id: 5, name: "Louis Litt", role: "Financial Analyst", email: "louis@cluecorp.com" },
     ];
+=======
+    const login = (email, password) => {
+        // Mock login logic - in real world this would hit an API
+>>>>>>> f9799c1 ( Fix welcome back logic and update login placeholder)
 
     const login = (email, password) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (email && password) {
+<<<<<<< HEAD
                     // Find user by email
                     const foundUser = MOCK_EMPLOYEES.find(e => e.email.toLowerCase() === email.toLowerCase());
 
@@ -62,6 +68,24 @@ export const AuthProvider = ({ children }) => {
                         localStorage.setItem('hrms_user', JSON.stringify(mockUser));
                         resolve(mockUser);
                     }
+=======
+                    const emailName = email.split('@')[0];
+                    // Capitalize the first letter
+                    let generatedName = emailName.charAt(0).toUpperCase() + emailName.slice(1);
+                    // Change dots to spaces (e.g. john.doe -> John doe)
+                    generatedName = generatedName.replace('.', ' ');
+
+                    const mockUser = {
+                        id: `user_${Date.now()}`,
+                        name: generatedName || 'Admin User',
+                        email: email,
+                        role: 'HR Manager',
+                        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(generatedName || 'Admin User')}&background=6366f1&color=fff`
+                    };
+                    setUser(mockUser);
+                    localStorage.setItem('hrms_user', JSON.stringify(mockUser));
+                    resolve(mockUser);
+>>>>>>> f9799c1 ( Fix welcome back logic and update login placeholder)
                 } else {
                     reject(new Error('Invalid credentials'));
                 }

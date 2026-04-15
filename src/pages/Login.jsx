@@ -72,7 +72,7 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 style={{ paddingLeft: '2.5rem' }}
-                                placeholder="name@company.com"
+                                placeholder="name@cluecorp.com"
                                 required
                             />
                         </div>
